@@ -1,38 +1,19 @@
-.App {
-  text-align: center;
+import React, { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import Wave from './components/Wave'
+
+function App() {
+  return (
+    <Canvas>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      <OrbitControls />
+      <Suspense fallback={null}>
+        <Wave count={100} position={[0, 0, 0]} />
+      </Suspense>
+    </Canvas>
+  )
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default App
