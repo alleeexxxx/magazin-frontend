@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Wave from './components/Wave';
 import Fire from './components/Fire';
+import Hurricane from './components/Hurricane';
 import Header from './components/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Wave count={100} position={[0, 0, 0]} />} />
             <Route path="/fire" element={<Fire count={100} />} />
+            <Route path="/hurricane" element={<Hurricane count={100} />} />
           </Routes>
         </Suspense>
       </Canvas>

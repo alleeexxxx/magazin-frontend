@@ -11,6 +11,9 @@ function Header() {
         <li>
           <Link to="/fire">Fire</Link>
         </li>
+        <li>
+          <Link to="/hurricane">Hurricane</Link>
+        </li>
       </ul>
     </nav>
   );
