@@ -4,11 +4,11 @@ import { OrbitControls } from '@react-three/drei';
 import Wave from './components/Wave';
 import Fire from './components/Fire';
 import Header from './components/Header';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <Canvas style={{ width: '100vw', height: '100vh', margin: 0, overflow: 'hidden' }}>
         <ambientLight intensity={0.5} />
@@ -21,7 +21,7 @@ function App() {
           </Routes>
         </Suspense>
       </Canvas>
-    </Router>
+    </BrowserRouter>
   );
 }
 
