@@ -4,6 +4,7 @@ import { OrbitControls } from '@react-three/drei';
 import Wave from './components/Wave';
 import Fire from './components/Fire';
 import Hurricane from './components/Hurricane';
+import Maze from './components/Maze';
 import Header from './components/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Wave count={100} position={[0, 0, 0]} />} />
             <Route path="/fire" element={<Fire count={100} />} />
             <Route path="/hurricane" element={<Hurricane count={100} />} />
+            <Route path="/maze" element={<Maze />} />
           </Routes>
         </Suspense>
       </Canvas>
