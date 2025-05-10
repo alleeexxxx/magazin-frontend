@@ -1,33 +1,31 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Mesh, MathUtils } from 'three';
-
-function Wave() {
-  const mesh = useRef();
-  const waveLength = 2;
-  const amplitude = 0.5;
-  const speed = 2;
-
-  useFrame((state, delta) => {
-    const time = state.clock.elapsedTime * speed;
-    mesh.current.position.y = amplitude * Math.sin(mesh.current.position.x / waveLength + time);
-  });
-
-  return (
-    <mesh ref={mesh} position={[0, 0, 0]}>
-      <planeGeometry args={[10, 10, 64, 64]} />
-      <meshBasicMaterial color="lightblue" wireframe={true} />
-    </mesh>
-  );
-}
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Wave from './components/Wave';
+import Fire from './components/Fire';
+import Hurricane from './components/Hurricane';
+import Maze from './components/Maze';
+import Header from './components/Header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Canvas>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[-2, 5, 2]} intensity={1} />
-      <Wave />
-    </Canvas>
+    <BrowserRouter>
+      <Header />
+      <Canvas style={{ width: '100vw', height: '100vh', margin: 0, overflow: 'hidden' }}>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        <OrbitControls />
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<Wave count={100} position={[0, 0, 0]} />} />
+            <Route path="/fire" element={<Fire count={100} />} />
+            <Route path="/hurricane" element={<Hurricane count={100} />} />
+            <Route path="/maze" element={<Maze />} />
+          </Routes>
+        </Suspense>
+      </Canvas>
+    </BrowserRouter>
   );
 }
 
